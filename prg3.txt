@@ -1,0 +1,168 @@
+npx create-react-app program3
+cd program3
+program3/src/ResumeCreate
+
+
+Resume_Header.js
+
+import React from "react";
+class Resume_Header extends React.Component {
+    render() {
+        return (
+            <h1>Resume Details</h1>
+        );
+    }
+}
+export default Resume_Header;
+
+
+Resume_Person_Info.js
+
+import React from "react";
+class Resume_Person_Info extends React.Component {
+    render() {
+        return (
+            <div>
+                <div>Name : <p>Prashanth K</p></div><br/>
+                <div>Address : <p>Kengeri</p></div><br/>
+                <div>Phone No : <p>1234567890</p></div><br/>
+                <div>Email id : <p>prashanthk@rvce.edu.in</p></div>
+            </div>
+        );
+    }
+}
+export default Resume_Person_Info;
+
+
+Education.js
+
+import React from "react";
+
+class EdRow extends React.Component {
+    render() {
+        return (
+            <tr>
+                <td>{this.props.id}</td>
+                <td>{this.props.name}</td>
+                <td>{this.props.place}</td>
+                <td>{this.props.stddeg}</td>
+                <td>{this.props.grade}</td>
+            </tr>
+        );
+    }
+}
+
+class EdTable extends React.Component {
+    render() {
+        const education = [
+            {
+                id: 1,
+                name: "National Public School",
+                place: "Bengaluru",
+                stddeg: "10th",
+                grade: "A+",
+            },
+            {
+                id: 2,
+                name: "Indian Institute of Science",
+                place: "Bengaluru",
+                stddeg: "Under Graduate",
+                grade: "9.8",
+            },
+        ];
+        const edudetails = education.map(educ =>
+            <EdRow
+                key={educ.id}
+                id={educ.id}
+                name={educ.name}
+                place={educ.place}
+                stddeg={educ.stddeg}
+                grade={educ.grade}
+            />
+        );
+
+        return (
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Place</th>
+                        <th>Education</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>{edudetails}</tbody>
+            </table>
+        );
+    }
+}
+
+class Education extends React.Component {
+    render() {
+        return (
+            <section>
+                <EdTable />
+            </section>
+        );
+    }
+}
+export default Education;
+
+
+/src/index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+
+import Resume_Header from './ResumeCreate/Resume_Header';
+import Resume_Person_Info from './ResumeCreate/Resume_Person_Info';
+import Education from './ResumeCreate/Education';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Resume_Header />
+    <Resume_Person_Info />
+    <Education />
+  </React.StrictMode>
+);
+
+
+src/index.css
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f4f7;
+  margin: 40px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  border-bottom: 2px solid #444;
+  padding-bottom: 10px;
+}
+
+div {
+  font-size: 18px;
+  margin-left: 30px;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #444;
+  text-align: center;
+}
+
+
+
+npm start
